@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>McLaren · Team Profile</title>
+
+  <style>
+    :root {
+      --page-bg: radial-gradient(circle at top left, #ff7b39 0, #ff7b39 55%, #020106 100%);
+      --card-bg: rgba(10, 10, 20, 0.95);
+      --accent: #ff7b39;        /* McLaren papaya – change per team */
+      --text-main: #f5f5f5;
+      --text-muted: rgba(245,245,245,0.7);
+      --border-soft: rgba(255,255,255,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Formula1", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    @font-face {
+      font-family: "Formula1";
+      src: url("/fonts/Formula1-Display-Regular.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--page-bg);
+      color: var(--text-main);
+    }
+
+    /* Top bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      border-bottom: 1px solid var(--border-soft);
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.65), transparent);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-title {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.9rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 18px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+    }
+
+    .top-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .top-nav a:hover {
+      color: #ffffff;
+    }
+
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    /* ========================= */
+    /*   HERO: TEAM + CAR        */
+    /* ========================= */
+
+    .team-hero-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .team-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .team-label {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .team-name-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .team-name-row h1 {
+      font-size: 2.2rem;
+      text-transform: uppercase;
+    }
+
+    .team-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #ff7b39;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .team-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .team-tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .team-accent-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .team-car-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 55%);
+    }
+
+    .team-car-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 340px;
+    }
+
+    @media (max-width: 900px) {
+      .team-hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========================= */
+    /*   QUICK FACTS STRIP       */
+    /* ========================= */
+
+    .team-facts-strip {
+      background: rgba(5,5,10,0.9);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 14px 18px 12px;
+      margin-bottom: 30px;
+    }
+
+    .team-facts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .team-fact {
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding-right: 10px;
+    }
+
+    .team-fact:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .team-fact-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .team-fact-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .team-facts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .team-fact {
+        border-right: none;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .team-facts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========================= */
+    /*   TWO-COLUMN GRID         */
+    /* ========================= */
+
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 18px 20px;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    /* SEASON STATS */
+    .stats-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .stat-item {
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .stat-footnote {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .stats-divider {
+      margin: 10px 0 12px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .stats-link {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .stats-link:hover {
+      color: #ffffff;
+    }
+
+    /* TEAM PROFILE */
+    .profile-heading {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .profile-text p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    /* DRIVERS LINE-UP */
+    .drivers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .driver-tile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 8px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .driver-tile:hover {
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .driver-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: #000;
+      flex-shrink: 0;
+    }
+
+    .driver-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .driver-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .driver-number-small {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .driver-name {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    /* RELATED CONTENT */
+    .related-list {
+      display: grid;
+      gap: 8px;
+      font-size: 0.86rem;
+    }
+
+    .related-link {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .related-link:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .two-col-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar {
+        padding-inline: 18px;
+      }
+      .page-wrap {
+        padding-inline: 16px;
+      }
+      .team-name-row h1 {
+        font-size: 1.8rem;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .drivers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-title">Ground Effect Lab</div>
+      <div class="brand-subtitle">Teams · Drivers · Championship</div>
+    </div>
+    <nav class="top-nav">
+      <a href="../index.html">Home</a>
+      <a href="../teams.html">All Teams</a>
+      <a href="../drivers.html">Drivers</a>
+    </nav>
+  </header>
+
+  <main class="page-wrap">
+
+    <!-- HERO: TEAM + CAR -->
+    <section class="team-hero-card">
+      <div class="team-hero-grid">
+        <div>
+          <div class="team-label">Team · Formula 1</div>
+
+          <div class="team-name-row">
+            <div class="team-logo">              <img src="../team-logos/2025mclarenlogowhite.png" alt="McLaren logo">
+            </div>
+            <h1>McLaren</h1>
+          </div>
+
+          <div class="team-tagline">
+            One of the most historic names in Formula 1, blending papaya heritage with modern aero efficiency.
+          </div>
+
+          <div class="team-accent-pill">
+            <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>
+            MCL39 · 2025 Season
+          </div>
+        </div>
+
+        <div class="team-car-wrap">
+          <!-- swap for your car render -->
+          <img
+            src="../cars/2025mclarencarright.jpeg"
+            alt="McLaren F1 car"
+            class="team-car-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK FACTS STRIP -->
+    <section class="team-facts-strip">
+      <div class="team-facts-grid">
+        <div class="team-fact">
+          <div class="team-fact-label">Base</div>
+          <div class="team-fact-value">Woking, United Kingdom</div>
+        </div>
+        <div class="team-fact">
+          <div class="team-fact-label">Team Principal</div>
+          <div class="team-fact-value">Andrea Stella</div>
+        </div>
+        <div class="team-fact">
+          <div class="team-fact-label">Chassis</div>
+          <div class="team-fact-value">MCL39</div>
+        </div>
+        <div class="team-fact">
+          <div class="team-fact-label">Power Unit</div>
+          <div class="team-fact-value">Mercedes</div>
+        </div>
+        <div class="team-fact">
+          <div class="team-fact-label">First Team Entry</div>
+          <div class="team-fact-value">1966</div>
+        </div>
+        <div class="team-fact">
+          <div class="team-fact-label">World Championships</div>
+          <div class="team-fact-value">8</div>
+        </div>
+        <div class="team-fact">
+          <div class="team-fact-label">Race Wins</div>
+          <div class="team-fact-value">180+</div>
+        </div>
+        <div class="team-fact">
+          <div class="team-fact-label">Podiums</div>
+          <div class="team-fact-value">490+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TWO-COLUMN GRID -->
+    <section class="two-col-grid">
+
+      <!-- LEFT: SEASON STATS -->
+      <article class="card">
+        <div class="card-title">Season Statistics</div>
+        <div class="stats-subtitle">2025 Constructors’ Championship</div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Position</div>
+            <div class="stat-value">2nd</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Points</div>
+            <div class="stat-value">580</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Races</div>
+            <div class="stat-value">24</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Wins</div>
+            <div class="stat-value">9</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Podiums</div>
+            <div class="stat-value">25</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Pole Positions</div>
+            <div class="stat-value">8</div>
+          </div>
+        </div>
+
+        <div class="stats-divider"></div>
+
+        <div class="stats-subtitle">All-Time Record</div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Seasons in F1</div>
+            <div class="stat-value">50+</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Constructors’ Titles</div>
+            <div class="stat-value">8</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Drivers’ Titles</div>
+            <div class="stat-value">12</div>
+          </div>
+        </div>
+
+        <a href="#" class="stats-link">Full season results →</a>
+      </article>
+
+      <!-- RIGHT: TEAM PROFILE -->
+      <article class="card">
+        <div class="card-title">Team Profile</div>
+        <div class="profile-heading">Innovation, papaya, and a comeback story</div>
+
+        <div class="profile-text">
+          <p>
+            From Bruce McLaren’s original vision to the papaya-orange machines of the
+            modern era, McLaren has been synonymous with innovation and fearless racing.
+            The team’s history is filled with legendary names – Senna, Prost, Hakkinen,
+            Hamilton – and iconic cars that reset the standards of performance and design.
+          </p>
+          <p>
+            After a challenging period in the hybrid era, McLaren’s recent resurgence
+            has been built on smarter aerodynamics, sharp strategy, and a young driver
+            pairing capable of extracting the maximum from every upgrade package.
+          </p>
+          <p>
+            The current MCL39 continues that trajectory, trading drag for downforce in
+            all the right places and turning McLaren into a constant podium threat – and
+            increasingly, a favourite for race wins.
+          </p>
+        </div>
+      </article>
+
+      <!-- LEFT ROW 2: DRIVERS LINE-UP -->
+      <article class="card">
+        <div class="card-title">Drivers Line-up</div>
+
+        <div cla]ss="drivers-grid">
+          <a href="../drivers/lando-norris.html" class="driver-tile">
+            <div class="driver-avatar">
+              <img src="../drivers/2025mclarenlannor01right.jpeg" alt="Lando Norris">
+            </div>
+            <div class="driver-info">
+              <div class="driver-number-small">#4</div>
+              <div class="driver-name">Lando Norris</div>
+            </div>
+          </a>
+
+          <a href="../drivers/oscar-piastri.html" class="driver-tile">
+            <div class="driver-avatar">
+              <img src="../drivers/2025mclarenoscpia01right.jpeg" alt="Oscar Piastri">
+            </div>
+            <div class="driver-info">
+              <div class="driver-number-small">#81</div>
+              <div class="driver-name">Oscar Piastri</div>
+            </div>
+          </a>
+        </div>
+      </article>
+
+      <!-- RIGHT ROW 2: RELATED CONTENT -->
+      <aside class="card">
+        <div class="card-title">Related Content</div>
+        <div class="related-list">
+          <a href="#" class="related-link">How McLaren’s upgrade package turned their season around →</a>
+          <a href="#" class="related-link">Tech insight · Inside the MCL39’s floor and rear wing →</a>
+          <a href="#" class="related-link">Gallery · McLaren liveries through the decades →</a>
+          <a href="#" class="related-link">Key moments from McLaren’s championship-winning years →</a>
+        </div>
+      </aside>
+
+    </section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ground Effect Lab · Race Mode</title>
+  <link rel="stylesheet" href="../css/race.css" />
+</head>
+<body>
+
+  <!-- TOP BAR (same layout as Build) -->
+  <header class="top-bar">
+    <div class="brand-block">
+      <h1>
+        <a href="../html/index.html">Ground Effect</a>
+      </h1>
+      <div class="tagline">Chassis · Aero · Racecraft</div>
+    </div>
+
+    <div class="mode-toggle">
+      <div class="mode-label" id="buildLabel">🛠️ Build</div>
+      <label class="switch">
+        <!-- checked by default = Race -->
+        <input type="checkbox" id="modeSwitch" checked />
+        <span class="slider"></span>
+      </label>
+      <div class="mode-label active" id="raceLabel">🏁 Race</div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- RACE HERO -->
+    <section class="hero hero-race">
+      <div class="hero-kicker">Mode · Race</div>
+      <h2>2025 Formula 1 <br> World Championship</h2>
+
+      <!-- DROPDOWN NAV -->
+      <nav class="race-nav">
+
+        <!-- TEAMS -->
+        <div class="race-nav-item">
+          <button type="button" class="race-nav-trigger">Teams</button>
+          <div class="race-dropdown">
+            <a href="../teams-html/mclaren.html">McLaren</a>
+            <a href="../teams-html/mercedes.html">Mercedes</a>
+            <a href="../teams-html/redbull.html">Red Bull Racing</a>
+            <a href="../teams-html/ferrari.html">Ferrari</a>
+            <a href="../teams-html/williams.html">Williams</a>
+            <a href="../teams-html/racingbulls.html">Racing Bulls</a>
+            <a href="../teams-html/astonmartin.html">Aston Martin</a>
+            <a href="../teams-html/haas.html">Haas F1 Team</a>
+            <a href="../teams-html/sauber.html">Kick Sauber</a>
+            <a href="../teams-html/alpine.html">Alpine</a>
+          </div>
+        </div>
+
+        <span class="race-nav-separator">·</span>
+
+        <!-- DRIVERS -->
+        <div class="race-nav-item">
+          <button type="button" class="race-nav-trigger">Drivers</button>
+          <div class="race-dropdown">
+            <a href="../drivers-html/piastri.html">Oscar Piastri</a>
+            <a href="../drivers-html/norris.html">Lando Norris</a>
+            <a href="../drivers-html/russell.html">George Russell</a>
+            <a href="../drivers-html/antonelli.html">Kimi Antonelli</a>
+            <a href="../drivers-html/verstappen.html">Max Verstappen</a>
+            <a href="../drivers-html/tsunoda.html">Yuki Tsunoda</a>
+            <a href="../drivers-html/leclerc.html">Charles Leclerc</a>
+            <a href="../drivers-html/hamilton.html">Lewis Hamilton</a>
+            <a href="../drivers-html/albon.html">Alexander Albon</a>
+            <a href="../drivers-html/sainz.html">Carlos Sainz</a>
+            <a href="../drivers-html/lawson.html">Liam Lawson</a>
+            <a href="../drivers-html/hadjar.html">Isack Hadjar</a>
+            <a href="../drivers-html/stroll.html">Lance Stroll</a>
+            <a href="../drivers-html/alonso.html">Fernando Alonso</a>
+            <a href="../drivers-html/ocon.html">Esteban Ocon</a>
+            <a href="../drivers-html/bearman.html">Oliver Bearman</a>
+            <a href="../drivers-html/hulkenberg.html">Nico Hülkenberg</a>
+            <a href="../drivers-html/bortoleto.html">Gabriel Bortoleto</a>
+            <a href="../drivers-html/gasly.html">Pierre Gasly</a>
+            <a href="../drivers-html/colapinto.html">Franco Colapinto</a>
+          </div>
+        </div>
+
+        <span class="race-nav-separator">·</span>
+
+        <!-- CHAMPIONSHIP -->
+        <div class="race-nav-item">
+          <button type="button" class="race-nav-trigger">Championship</button>
+          <div class="race-dropdown">
+            <a href="standings/drivers.html">Driver Standings</a>
+            <a href="standings/constructors.html">Constructor Standings</a>
+            <a href="calendar.html">Race Calendar</a>
+          </div>
+        </div>
+
+      </nav>
+    </section>
+
+    <!-- RACE GRID -->
+    <section class="race-grid-section">
+      <div class="race-grid-title">F125</div>
+
+      <div class="race-box-grid">
+        <a href="../rounds-html/round1.html" class="race-box">
+          <img src="../track-button/round1.png" class="race-box-img" alt="Round 1" />
+        </a>
+
+        <a href="../rounds-html/round2.html" class="race-box">
+          <img src="../track-button/round2.png" class="race-box-img" alt="Round 2" />
+        </a>
+
+        <a href="../rounds-html/round3.html" class="race-box">
+          <img src="../track-button/round3.png" class="race-box-img" alt="Round 3" />
+        </a>
+
+        <a href="../rounds-html/round4.html" class="race-box">
+          <img src="../track-button/round4.png" class="race-box-img" alt="Round 4" />
+        </a>
+
+        <a href="../rounds-html/round5.html" class="race-box">
+          <img src="../track-button/round5.png" class="race-box-img" alt="Round 5" />
+        </a>
+
+        <a href="../rounds-html/round6.html" class="race-box">
+          <img src="../track-button/round6.png" class="race-box-img" alt="Round 6" />
+        </a>
+
+        <a href="round7.html" class="race-box">
+          <img src="../track-button/round7.png" class="race-box-img" alt="Round 7" />
+        </a>
+
+        <a href="round8.html" class="race-box">
+          <img src="../track-button/round8.png" class="race-box-img" alt="Round 8" />
+        </a>
+
+        <a href="round9.html" class="race-box">
+          <img src="../track-button/round9.png" class="race-box-img" alt="Round 9" />
+        </a>
+
+        <a href="round10.html" class="race-box">
+          <img src="../track-button/round10.png" class="race-box-img" alt="Round 10" />
+        </a>
+
+        <a href="round11.html" class="race-box">
+          <img src="../track-button/round11.png" class="race-box-img" alt="Round 11" />
+        </a>
+
+        <a href="round12.html" class="race-box">
+          <img src="../track-button/round12.png" class="race-box-img" alt="Round 12" />
+        </a>
+
+        <a href="round13.html" class="race-box">
+          <img src="../track-button/round13.png" class="race-box-img" alt="Round 13" />
+        </a>
+
+        <a href="round14.html" class="race-box">
+          <img src="../track-button/round14.png" class="race-box-img" alt="Round 14" />
+        </a>
+
+        <a href="round15.html" class="race-box">
+          <img src="../track-button/round15.png" class="race-box-img" alt="Round 15" />
+        </a>
+
+        <a href="round16.html" class="race-box">
+          <img src="../track-button/round16.png" class="race-box-img" alt="Round 16" />
+        </a>
+
+        <a href="round17.html" class="race-box">
+          <img src="../track-button/round17.png" class="race-box-img" alt="Round 17" />
+        </a>
+
+        <a href="round18.html" class="race-box">
+          <img src="../track-button/round18.png" class="race-box-img" alt="Round 18" />
+        </a>
+
+        <a href="round19.html" class="race-box">
+          <img src="../track-button/round19.png" class="race-box-img" alt="Round 19" />
+        </a>
+
+        <a href="round20.html" class="race-box">
+          <img src="../track-button/round20.png" class="race-box-img" alt="Round 20" />
+        </a>
+
+        <a href="round21.html" class="race-box">
+          <img src="../track-button/round21.png" class="race-box-img" alt="Round 21" />
+        </a>
+
+        <a href="round22.html" class="race-box">
+          <img src="../track-button/round22.png" class="race-box-img" alt="Round 22" />
+        </a>
+
+        <a href="round23.html" class="race-box">
+          <img src="../track-button/round23.png" class="race-box-img" alt="Round 23" />
+        </a>
+
+        <a href="round24.html" class="race-box">
+          <img src="../track-button/round24.png" class="race-box-img" alt="Round 24" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/race.js"></script>
+</body>
+</html>

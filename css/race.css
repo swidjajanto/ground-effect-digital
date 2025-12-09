@@ -1,0 +1,324 @@
+:root {
+    --build-bg: radial-gradient(circle at top left, #18253f 0, #050814 55%, #020308 100%);
+    --race-bg: radial-gradient(circle at top right, #3a0010 0, #090007 55%, #020105 100%);
+    --accent-build: #00b894;
+    --accent-race: #ff3131;
+    --text-main: #f5f5f5;
+    --text-muted: rgba(245, 245, 245, 0.7);
+    --border-subtle: rgba(255, 255, 255, 0.12);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Formula1", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  @font-face {
+    font-family: "Formula1";
+    src: url("/fonts/Formula1-Display-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    min-height: 100vh;
+    color: var(--text-main);
+    background: var(--race-bg);
+  }
+  
+  .page {
+    padding: 40px 32px 56px;
+  }
+  
+  /* TOP BAR (same as build.css) */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: blur(12px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+  }
+  
+  .brand-block h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  
+  .brand-block h1 a {
+    color: var(--text-main);
+    text-decoration: none;
+  }
+  
+  .brand-block h1 a:hover {
+    opacity: 0.8;
+  }
+  
+  .brand-block .tagline {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .mode-label {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .mode-label.active {
+    opacity: 1;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 84px;
+    height: 32px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 999px;
+    background-color: #20253a;
+    transition: 0.3s;
+    border: 1px solid var(--border-subtle);
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "Build";
+    height: 24px;
+    width: 40px;
+    left: 3px;
+    top: 3px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #050814;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* checked = Race */
+  .switch input:checked + .slider {
+    background-color: #3b0713;
+    border-color: rgba(255, 49, 49, 0.7);
+  }
+  
+  .switch input:checked + .slider:before {
+    transform: translateX(37px);
+    content: "Race";
+    background-color: #ff3131;
+    color: #fff;
+  }
+  
+  /* HERO */
+  
+  .hero {
+    max-width: 720px;
+  }
+  
+  .hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  
+  .hero h2 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  
+  .hero-race {
+    margin-bottom: 8px;
+  }
+  
+  /* DROPDOWN NAV */
+  
+  .race-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  
+  .race-nav-separator {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+  
+  .race-nav-item {
+    position: relative;
+  }
+  
+  .race-nav-trigger {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  
+    font-size: 0.95rem;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+  
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+  
+  .race-nav-trigger:hover {
+    color: var(--accent-race);
+    transform: translateY(-1px);
+  }
+  
+  .race-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 220px;
+    padding: 10px 12px;
+    background: rgba(5, 6, 12, 0.96);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    display: none;
+    z-index: 20;
+  }
+  
+  /* keep open on hover OR while any child has focus */
+  .race-nav-item:hover .race-dropdown,
+  .race-nav-item:focus-within .race-dropdown {
+    display: block;
+  }
+  
+  .race-dropdown a {
+    display: block;
+    padding: 6px 4px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-radius: 6px;
+  }
+  
+  .race-dropdown a + a {
+    margin-top: 2px;
+  }
+  
+  .race-dropdown a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  
+  /* RACE GRID */
+  
+  .race-grid-section {
+    margin-top: 40px;
+  }
+  
+  .race-grid-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  
+  .race-box-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .race-box {
+    border-radius: 18px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(3, 7, 23, 0.85);
+    backdrop-filter: blur(12px);
+    min-height: 220px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      border-color 0.18s ease,
+      background-color 0.18s ease;
+  }
+  
+  .race-box-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .race-box:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
+    border-color: rgba(255, 255, 255, 0.32);
+  }
+  
+  @media (max-width: 900px) {
+    .race-box-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .race-box-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .page {
+      padding-inline: 16px;
+    }
+  
+    .top-bar {
+      padding-inline: 18px;
+    }
+  }  

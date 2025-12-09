@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ground Effect Lab · Build Mode</title>
+  <link rel="stylesheet" href="../css/homepage.css" />
+</head>
+<body>
+
+  <!-- TOP BAR (same structure as Race Mode header) -->
+  <header class="top-bar">
+    <div class="brand-block">
+      <h1>
+        <a href="../html/index.html">Ground Effect</a>
+      </h1>
+      <div class="tagline">Chassis · Aero · Racecraft</div>
+    </div>
+
+    <div class="mode-toggle">
+      <div class="mode-label active" id="buildLabel">🛠️ Build</div>
+      <label class="switch">
+        <input type="checkbox" id="modeSwitch" />
+        <span class="slider"></span>
+      </label>
+      <div class="mode-label" id="raceLabel">🏁 Race</div>
+    </div>
+  </header>
+
+  <!-- BUILD MODE PAGE (unchanged logic, just moved under header) -->
+  <main class="page-wrap">
+    <header class="build-header">
+      <div class="build-kicker">Mode · Build</div>
+      <h1 class="build-title">Ground Effect Blueprint</h1>
+      <p class="build-subtitle">
+        Start with the full car blueprint, then drill down into each system. Click a number on the
+        glowing car or use the module tags below to explore chapter-by-chapter.
+      </p>
+    </header>
+
+    <!-- TOP: OVERALL BLUEPRINT HERO -->
+    <section class="hero-blueprint">
+      <div class="hero-title">Overall Blueprint · Chapter Map</div>
+
+      <div class="hero-blueprint-wrap">
+        <!-- Replace with your glowing top-view image -->
+        <img
+          src="../blueprints/ge-8.png"
+          alt="Overall F1 car blueprint"
+          class="hero-blueprint-img"
+        />
+
+        <!-- Hotspots drive the same module logic as tabs -->
+        <button class="hotspot active" data-module="chassis" data-label="Chassis">1</button>
+        <button class="hotspot" data-module="front-wing" data-label="Front Wing">2</button>
+        <button class="hotspot" data-module="floor" data-label="Floor">3</button>
+        <button class="hotspot" data-module="rear-wing" data-label="Rear Wing">4</button>
+        <button class="hotspot" data-module="power-unit" data-label="Power Unit &amp; Cooling">5</button>
+        <button class="hotspot" data-module="suspension" data-label="Suspension &amp; Brakes">6</button>
+        <button class="hotspot" data-module="tyres" data-label="Wheels &amp; Tyres">7</button>
+      </div>
+
+      <p class="hero-note">
+        1–7 correspond to the main chapters: 1) Chassis · 2) Front Wing · 3) Floor · 4) Rear Wing ·
+        5) Power Unit &amp; Cooling · 6) Suspension &amp; Braking · 7) Wheels &amp; Tyres.
+      </p>
+    </section>
+
+    <!-- LOWER LAYOUT: MODULE BLUEPRINT + INFO -->
+    <section class="build-layout">
+      <!-- LEFT: MODULE BLUEPRINT -->
+      <section class="blueprint-panel">
+        <div class="blueprint-title" id="moduleBlueprintTitle">Chassis · Blueprint View</div>
+        <div class="blueprint-wrap">
+          <img
+            src="images/blueprint-chassis.png"
+            alt="Chassis blueprint"
+            class="blueprint-img"
+            id="moduleBlueprintImg"
+          />
+        </div>
+        <p class="blueprint-legend" id="moduleBlueprintLegend">
+          Chapter 1 · Monocoque survival cell, impact structures, roll hoop and cockpit layout.
+        </p>
+      </section>
+
+      <!-- RIGHT: MODULE INFO -->
+      <section class="info-panel">
+        <div class="module-tabs">
+          <button class="module-tab active" data-module="chassis">Chassis</button>
+          <button class="module-tab" data-module="front-wing">Front Wing</button>
+          <button class="module-tab" data-module="floor">Floor</button>
+          <button class="module-tab" data-module="rear-wing">Rear Wing</button>
+          <button class="module-tab" data-module="power-unit">Power Unit &amp; Cooling</button>
+          <button class="module-tab" data-module="suspension">Suspension &amp; Braking</button>
+          <button class="module-tab" data-module="tyres">Wheels &amp; Tyres</button>
+        </div>
+
+        <h2 class="module-heading" id="moduleHeading">
+          Chassis · Survival Cell &amp; Structure
+        </h2>
+        <p class="module-description" id="moduleDescription">
+          The chassis is the structural core of the car: a carbon monocoque survival cell with
+          impact structures, mountings, and cockpit that carry loads, protect the driver, and
+          support every other system.
+        </p>
+
+        <div class="module-scroll" id="moduleScroll">
+          <!-- CHASSIS GROUP -->
+          <div class="part-grid module-group active" data-module="chassis">
+            <article class="part-card">
+              <div class="part-title">1.1</div>
+              <div class="part-name">Monocoque</div>
+              <p class="part-text">
+                Single-piece carbon fibre shell that forms the survival cell and main chassis,
+                distributing loads and protecting the driver under acceleration, cornering,
+                and impacts.
+              </p>
+              <div class="part-chip-row">
+                <span class="part-chip">Survival cell</span>
+                <span class="part-chip">Carbon fibre</span>
+              </div>
+            </article>
+
+            <article class="part-card">
+              <div class="part-title">1.2</div>
+              <div class="part-name">Front Impact Structure</div>
+              <p class="part-text">
+                Sacrificial crash cone ahead of the monocoque that crushes progressively in a
+                frontal hit, absorbing energy before it reaches the survival cell.
+              </p>
+            </article>
+
+            <article class="part-card">
+              <div class="part-title">1.3</div>
+              <div class="part-name">Rear Impact Structure</div>
+              <p class="part-text">
+                Crash structure between chassis and gearbox that protects the fuel tank and power
+                unit, while also supporting diffuser and rear suspension hardware.
+              </p>
+            </article>
+
+            <article class="part-card">
+              <div class="part-title">1.4</div>
+              <div class="part-name">Side Impact &amp; Anti-Intrusion</div>
+              <p class="part-text">
+                Side structures and Kevlar panels beside the cockpit that absorb lateral energy
+                and stop debris entering the survival cell.
+              </p>
+            </article>
+
+            <article class="part-card">
+              <div class="part-title">1.5</div>
+              <div class="part-name">Suspension Mounting</div>
+              <p class="part-text">
+                Titanium inserts and bulkheads in the monocoque that anchor wishbones and pushrods,
+                aligning loads so the chassis stays rigid and predictable.
+              </p>
+            </article>
+
+            <article class="part-card">
+              <div class="part-title">1.6</div>
+              <div class="part-name">Engine Mounting</div>
+              <p class="part-text">
+                Structural connections that let the power unit act as a stressed member, but are
+                engineered to break away safely in a heavy crash.
+              </p>
+            </article>
+
+            <article class="part-card">
+              <div class="part-title">1.7</div>
+              <div class="part-name">Rollover Structure &amp; Halo</div>
+              <p class="part-text">
+                Titanium / composite hoop and halo above the cockpit that maintain a protected
+                survival space if the car flips or lands upside down.
+              </p>
+            </article>
+
+            <article class="part-card">
+              <div class="part-title">1.8</div>
+              <div class="part-name">Cockpit</div>
+              <p class="part-text">
+                Driver’s molded carbon seat, controls, and padding inside the survival cell,
+                shaped for rapid egress and clear feedback while meeting FIA safety rules.
+              </p>
+            </article>
+          </div>
+
+          <!-- FRONT WING GROUP -->
+          <div class="part-grid module-group" data-module="front-wing">
+            <article class="part-card">
+              <div class="part-title">2.1</div>
+              <div class="part-name">Wing Elements</div>
+              <p class="part-text">
+                Multi-element front wing that sculpts pressure above and below the nose to
+                generate front downforce and set balance.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">2.2</div>
+              <div class="part-name">Endplates</div>
+              <p class="part-text">
+                Vertical plates that manage tyre wake, confine low-pressure air under the wing,
+                and use slots and curves to control outwash and vortices.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">2.3</div>
+              <div class="part-name">Nose Pylons</div>
+              <p class="part-text">
+                Slender struts that structurally support the wing and also guide air under the nose
+                into the floor and Venturi tunnels.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">2.4</div>
+              <div class="part-name">Angle of Attack</div>
+              <p class="part-text">
+                Fine flap adjustments that trade drag for front downforce, shifting aero balance
+                in fractions of a degree.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">2.5</div>
+              <div class="part-name">Gurney Flaps</div>
+              <p class="part-text">
+                Tiny trailing-edge lips that energize the flow and add downforce without major
+                geometry changes.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">2.6</div>
+              <div class="part-name">Y-Split Vortex</div>
+              <p class="part-text">
+                Paired vortices formed under the nose that help seal the floor and organize
+                airflow toward the tunnels and around the tyres.
+              </p>
+            </article>
+          </div>
+
+          <!-- FLOOR GROUP -->
+          <div class="part-grid module-group" data-module="floor">
+            <article class="part-card">
+              <div class="part-title">3.1</div>
+              <div class="part-name">Venturi Tunnels</div>
+              <p class="part-text">
+                Sculpted channels under the car that accelerate air, drop pressure, and generate
+                the majority of ground-effect downforce.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">3.2</div>
+              <div class="part-name">Edge Sealing</div>
+              <p class="part-text">
+                Floor edges and fences that create vortices to keep high-pressure air from leaking
+                into the low-pressure tunnels.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">3.3</div>
+              <div class="part-name">Floor Support</div>
+              <p class="part-text">
+                Stays and internal ribs that stop the floor from flexing so the tunnel geometry
+                stays consistent.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">3.4</div>
+              <div class="part-name">Diffuser Expansion</div>
+              <p class="part-text">
+                Rear expansion zone that turns high-speed tunnel flow into pressure recovery and
+                rear downforce while feeding the wake cleanly.
+              </p>
+            </article>
+          </div>
+
+          <!-- REAR WING GROUP -->
+          <div class="part-grid module-group" data-module="rear-wing">
+            <article class="part-card">
+              <div class="part-title">4.1</div>
+              <div class="part-name">Mainplane &amp; Flap</div>
+              <p class="part-text">
+                Dual-element rear wing that provides high downforce and closes the aero balance
+                set by the floor and front wing.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">4.2</div>
+              <div class="part-name">Beam Wing</div>
+              <p class="part-text">
+                Lower wing element that draws flow out of the diffuser, boosting ground-effect
+                performance and shaping the rear wake.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">4.3</div>
+              <div class="part-name">DRS Actuation</div>
+              <p class="part-text">
+                Controlled flap opening that sheds drag on the straight while keeping the structure
+                safe and stable.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">4.4</div>
+              <div class="part-name">Slipstream &amp; Wake Flow</div>
+              <p class="part-text">
+                Management of vortices and pressure behind the car so it stays stable and leaves a
+                wake that still allows racing.
+              </p>
+            </article>
+          </div>
+
+          <!-- POWER UNIT GROUP -->
+          <div class="part-grid module-group" data-module="power-unit">
+            <article class="part-card">
+              <div class="part-title">5.1</div>
+              <div class="part-name">Internal Combustion V6</div>
+              <p class="part-text">
+                1.6 L turbo V6 acting as both power source and stressed chassis member, tuned for
+                very high thermal efficiency.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">5.2</div>
+              <div class="part-name">MGU-H &amp; MGU-K</div>
+              <p class="part-text">
+                Motor-generator units that recover energy from exhaust heat and braking, then
+                redeploy it as electric power to the drivetrain and turbo.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">5.3</div>
+              <div class="part-name">Turbo &amp; Exhaust</div>
+              <p class="part-text">
+                Split-turbo layout and exhaust routing that convert waste-gas energy into boost
+                while also feeding aero flow over the rear of the car.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">5.4</div>
+              <div class="part-name">Cooling &amp; Sidepods</div>
+              <p class="part-text">
+                Radiators, intercoolers, and ducting inside the sidepods that keep the hybrid
+                system in a tight thermal window without ruining aero.
+              </p>
+            </article>
+          </div>
+
+          <!-- SUSPENSION GROUP -->
+          <div class="part-grid module-group" data-module="suspension">
+            <article class="part-card">
+              <div class="part-title">6.1</div>
+              <div class="part-name">Push &amp; Pull Rod</div>
+              <p class="part-text">
+                Linkages that connect wheels to inboard rockers, setting how the car manages ride
+                height, anti-dive, and aero packaging.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">6.2</div>
+              <div class="part-name">Wishbones &amp; Uprights</div>
+              <p class="part-text">
+                Carbon arms and uprights that fix camber and toe, carry loads from the tyres, and
+                also act as aero surfaces around the wheels.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">6.3</div>
+              <div class="part-name">Steering Assembly</div>
+              <p class="part-text">
+                Column and rack-and-pinion system tuned for the steering ratio and feedback the
+                driver feels at turn-in and mid-corner.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">6.4</div>
+              <div class="part-name">Brake Components</div>
+              <p class="part-text">
+                Carbon discs, calipers, and brake ducts that manage thousand-degree temperatures
+                while keeping pedal feel consistent.
+              </p>
+            </article>
+          </div>
+
+          <!-- TYRES GROUP -->
+          <div class="part-grid module-group" data-module="tyres">
+            <article class="part-card">
+              <div class="part-title">7.1</div>
+              <div class="part-name">Tyre Compounds</div>
+              <p class="part-text">
+                Multi-layer construction and rubber mixes that trade peak grip for longevity and
+                work only in a narrow temperature window.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">7.2</div>
+              <div class="part-name">Wheel Dimension</div>
+              <p class="part-text">
+                18-inch magnesium rims that stiffen the tyre sidewall and change how suspension
+                geometry influences behaviour.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">7.3</div>
+              <div class="part-name">Tyre Control</div>
+              <p class="part-text">
+                Monitoring of temperatures and pressures so the compound stays in its ideal grip
+                window over a stint.
+              </p>
+            </article>
+            <article class="part-card">
+              <div class="part-title">7.4</div>
+              <div class="part-name">Contact Patch</div>
+              <p class="part-text">
+                Real-time mapping of how load is distributed across the tyre’s footprint, used to
+                tune suspension, aero balance, and driving style.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../js/homepage.js"></script>
+</body>
+</html>

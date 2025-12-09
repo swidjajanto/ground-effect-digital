@@ -1,0 +1,470 @@
+:root {
+    /* Build mode background + colours */
+    --build-bg: radial-gradient(circle at top left, #18253f 0, #050814 55%, #020308 100%);
+    --accent: #4fe4ff;
+    --accent-soft: rgba(79, 228, 255, 0.24);
+    --card-bg: rgba(5, 10, 25, 0.96);
+    --text-main: #f5f5f5;
+    --text-muted: rgba(245, 245, 245, 0.7);
+    --border-soft: rgba(255, 255, 255, 0.13);
+  
+    /* For header borrowed from Race mode */
+    --race-bg: radial-gradient(circle at top right, #3a0010 0, #090007 55%, #020105 100%);
+    --accent-build: #00b894;
+    --accent-race: #ff3131;
+    --border-subtle: rgba(255, 255, 255, 0.12);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Formula1", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  @font-face {
+    font-family: "Formula1";
+    src: url("/fonts/Formula1-Display-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    min-height: 100vh;
+    background: var(--build-bg);
+    color: var(--text-main);
+  }
+  
+  /* ========== TOP BAR (copied style from Race header) ========== */
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: blur(12px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+  }
+  
+  .brand-block h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  
+  .brand-block h1 a {
+    color: var(--text-main);
+    text-decoration: none;
+  }
+  
+  .brand-block h1 a:hover {
+    opacity: 0.8;
+  }
+  
+  .brand-block .tagline {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .mode-label {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .mode-label.active {
+    opacity: 1;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 84px;
+    height: 32px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 999px;
+    background-color: #20253a;
+    transition: 0.3s;
+    border: 1px solid var(--border-subtle);
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "Build";
+    height: 24px;
+    width: 40px;
+    left: 3px;
+    top: 3px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #050814;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .switch input:checked + .slider {
+    background-color: #3b0713;
+    border-color: rgba(255, 49, 49, 0.7);
+  }
+  
+  .switch input:checked + .slider:before {
+    transform: translateX(37px);
+    content: "Race";
+    background-color: #ff3131;
+    color: #fff;
+  }
+  
+  /* ========== BUILD PAGE LAYOUT (original) ========== */
+  
+  .page-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+  }
+  
+  .build-header {
+    margin-bottom: 20px;
+  }
+  
+  .build-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  
+  .build-title {
+    font-size: 2.4rem;
+    margin-bottom: 6px;
+  }
+  
+  .build-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    line-height: 1.6;
+  }
+  
+  /* OVERALL BLUEPRINT HERO */
+  
+  .hero-blueprint {
+    background: radial-gradient(circle at top, rgba(79, 228, 255, 0.12), rgba(0, 0, 0, 0.95));
+    border-radius: 22px;
+    border: 1px solid var(--border-soft);
+    padding: 16px 18px 20px;
+    margin-top: 24px;
+    margin-bottom: 26px;
+  }
+  
+  .hero-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  
+  .hero-blueprint-wrap {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    aspect-ratio: 16 / 9;
+    background: radial-gradient(circle at center, rgba(79, 228, 255, 0.12), transparent 55%);
+  }
+  
+  .hero-blueprint-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .hero-note {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  
+  /* HOTSPOTS */
+  
+  .hotspot {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: rgba(5, 15, 30, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+  
+  /* Tooltip above so it never gets cut off on the side */
+  .hotspot::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translate(-50%, 4px);
+    white-space: nowrap;
+    background: rgba(5, 10, 25, 0.96);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  
+  .hotspot:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 8px var(--accent-soft);
+    background: var(--accent);
+  }
+  
+  .hotspot:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -4px);
+  }
+  
+  .hotspot.active {
+    box-shadow: 0 0 0 10px var(--accent-soft);
+    background: var(--accent);
+  }
+  
+  /* approximate positions (tweak for your image) */
+  .hotspot[data-module="chassis"] { top: 42%; left: 47%; }
+  .hotspot[data-module="front-wing"] { top: 48%; left: 13%; }
+  .hotspot[data-module="floor"] { top: 58%; left: 48%; }
+  .hotspot[data-module="rear-wing"] { top: 45%; left: 86%; }
+  .hotspot[data-module="power-unit"] { top: 48%; left: 63%; }
+  .hotspot[data-module="suspension"] { top: 67%; left: 34%; }
+  .hotspot[data-module="tyres"] { top: 70%; left: 88%; }
+  
+  /* LOWER BUILD LAYOUT */
+  
+  .build-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 2.1fr);
+    gap: 24px;
+  }
+  
+  /* LEFT: MODULE BLUEPRINT PANEL */
+  
+  .blueprint-panel {
+    background: var(--card-bg);
+    border-radius: 18px;
+    border: 1px solid var(--border-soft);
+    padding: 16px 16px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .blueprint-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  
+  .blueprint-wrap {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 55%);
+    aspect-ratio: 4 / 3;
+  }
+  
+  .blueprint-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .blueprint-legend {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  
+  /* RIGHT: MODULE INFO PANEL */
+  
+  .info-panel {
+    background: var(--card-bg);
+    border-radius: 18px;
+    border: 1px solid var(--border-soft);
+    padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  
+  .module-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .module-tab {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  }
+  
+  .module-tab.active {
+    background: var(--accent);
+    color: #050814;
+    border-color: var(--accent);
+  }
+  
+  .module-heading {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  
+  .module-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  
+  .module-scroll {
+    margin-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 12px;
+    overflow-y: auto;
+    max-height: 420px;
+  }
+  
+  .part-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  
+  /* only one module-group visible at a time */
+  .module-group {
+    display: none;
+  }
+  
+  .module-group.active {
+    display: grid;
+  }
+  
+  .part-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 8px 9px 9px;
+    font-size: 0.82rem;
+  }
+  
+  .part-title {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  
+  .part-name {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+  }
+  
+  .part-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  
+  .part-chip-row {
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .part-chip {
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+  }
+  
+  /* RESPONSIVE */
+  
+  @media (max-width: 960px) {
+    .build-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .module-scroll {
+      max-height: none;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .page-wrap {
+      padding-inline: 16px;
+    }
+  
+    .top-bar {
+      padding-inline: 18px;
+    }
+  }  
