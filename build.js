@@ -120,7 +120,7 @@ if (modeSwitch) {
   modeSwitch.addEventListener("change", () => {
     if (modeSwitch.checked) {
       // Go to Race Mode page
-      window.location.href = "../html/race.html"; // <-- update path if needed
+      window.location.href = "../race.html"; // <-- update path if needed
     }
   });
 }
